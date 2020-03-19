@@ -67,12 +67,6 @@ public class WebClientBraveTests extends ITSpringConfiguredReactorClient {
 	}
 
 	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	public void redirect() {
-	}
-
-	@Test
 	@Ignore("WebClient has no portable function to retrieve the server address")
 	@Override
 	public void reportsServerAddress() {

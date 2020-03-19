@@ -42,44 +42,7 @@ public class ReactorNettyHttpClientBraveTests extends ITSpringConfiguredReactorC
 	}
 
 	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	public void redirect() {
-	}
-
-	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	public void supportsPortableCustomization() {
-	}
-
-	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	@Deprecated
-	public void supportsDeprecatedPortableCustomization() {
-	}
-
-	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	public void post() {
-	}
-
-	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	public void customSampler() {
-	}
-
-	@Test
-	@Ignore("TODO: reactor/reactor-netty#1000")
-	@Override
-	public void httpPathTagExcludesQueryParams() {
-	}
-
-	@Test
-	@Ignore("HttpClient has no function to retrieve the wire request from the response")
+	@Ignore("TODO: https://github.com/reactor/reactor-netty/issues/1031")
 	@Override
 	public void readsRequestAtResponseTime() {
 	}
