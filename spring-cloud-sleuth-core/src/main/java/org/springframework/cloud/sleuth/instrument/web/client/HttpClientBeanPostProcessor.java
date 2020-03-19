@@ -190,7 +190,6 @@ class HttpClientBeanPostProcessor implements BeanPostProcessor {
 
 		@Override
 		public void accept(HttpClientResponse response, Connection connection) {
-			// TODO: is there a way to read the request at response time?
 			handle(response.currentContext(), response, null);
 		}
 
@@ -302,19 +301,27 @@ class HttpClientBeanPostProcessor implements BeanPostProcessor {
 	static final class HttpClientResponseWrapper extends brave.http.HttpClientResponse {
 
 		final HttpClientResponse delegate;
+		HttpClientRequestWrapper request;
 
 		HttpClientResponseWrapper(HttpClientResponse delegate) {
 			this.delegate = delegate;
 		}
 
 		@Override
-		public String method() {
-			return delegate.method().name();
+		public Object unwrap() {
+			return delegate;
 		}
 
 		@Override
-		public Object unwrap() {
-			return delegate;
+		public HttpClientRequestWrapper request() {
+			if (request == null) {
+				if( delegate instanceof HttpClientRequest) {
+					request = new HttpClientRequestWrapper((HttpClientRequest) delegate);
+				} else {
+					assert false : "We expect the response to be the same reference as the request";
+				}
+			}
+			return request;
 		}
 
 		@Override

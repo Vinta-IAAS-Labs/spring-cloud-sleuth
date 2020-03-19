@@ -17,8 +17,6 @@
 package org.springframework.cloud.sleuth.instrument.web.client;
 
 import org.junit.After;
-import org.junit.Ignore;
-import org.junit.Test;
 import org.reactivestreams.Subscriber;
 import reactor.core.publisher.Mono;
 import reactor.netty.ByteBufFlux;
@@ -66,12 +64,6 @@ public class ReactorNettyHttpClientBraveTests extends ITSpringConfiguredReactorC
 	 */
 	public ReactorNettyHttpClientBraveTests() {
 		super(HttpClientBeanPostProcessor.class);
-	}
-
-	@Test
-	@Ignore("TODO: https://github.com/reactor/reactor-netty/issues/1031")
-	@Override
-	public void readsRequestAtResponseTime() {
 	}
 
 	@Override
