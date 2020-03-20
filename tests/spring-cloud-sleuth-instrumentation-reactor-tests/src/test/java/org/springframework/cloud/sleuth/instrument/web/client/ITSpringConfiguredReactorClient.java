@@ -90,6 +90,15 @@ abstract class ITSpringConfiguredReactorClient
 	final protected void get(AnnotationConfigApplicationContext context,
 			String pathIncludingQuery) {
 		getMono(context, pathIncludingQuery).block();
+		// TODO: flakey timing after redirect
+		// https://github.com/reactor/reactor-netty/pull/1033
+		try {
+			Thread.sleep(200);
+		}
+		catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			throw new AssertionError(e);
+		}
 	}
 
 	@Override
@@ -159,7 +168,8 @@ abstract class ITSpringConfiguredReactorClient
 		latch.await();
 
 		assertThat(server.getRequestCount()).isOne();
-		assertThat(takeSpan().tags()).containsKey("error");
+
+		takeClientSpanWithError("CANCELLED");
 	}
 
 }

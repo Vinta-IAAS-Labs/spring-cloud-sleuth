@@ -67,6 +67,12 @@ public class WebClientBraveTests extends ITSpringConfiguredReactorClient {
 	}
 
 	@Test
+	@Ignore("WebClient is blind to the implementation of redirects")
+	@Override
+	public void redirect() {
+	}
+
+	@Test
 	@Ignore("WebClient has no portable function to retrieve the server address")
 	@Override
 	public void reportsServerAddress() {

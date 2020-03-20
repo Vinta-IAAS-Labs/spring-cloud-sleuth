@@ -301,6 +301,7 @@ class HttpClientBeanPostProcessor implements BeanPostProcessor {
 	static final class HttpClientResponseWrapper extends brave.http.HttpClientResponse {
 
 		final HttpClientResponse delegate;
+
 		HttpClientRequestWrapper request;
 
 		HttpClientResponseWrapper(HttpClientResponse delegate) {
@@ -315,9 +316,10 @@ class HttpClientBeanPostProcessor implements BeanPostProcessor {
 		@Override
 		public HttpClientRequestWrapper request() {
 			if (request == null) {
-				if( delegate instanceof HttpClientRequest) {
+				if (delegate instanceof HttpClientRequest) {
 					request = new HttpClientRequestWrapper((HttpClientRequest) delegate);
-				} else {
+				}
+				else {
 					assert false : "We expect the response to be the same reference as the request";
 				}
 			}
