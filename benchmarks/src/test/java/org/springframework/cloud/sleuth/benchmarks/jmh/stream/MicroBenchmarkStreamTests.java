@@ -163,7 +163,7 @@ public class MicroBenchmarkStreamTests {
 			sleuthSimpleOnLast(function("simple"), Pair.onLast()),
 			sleuthSimpleWithAroundOnQueues(function("simple_function_with_around")),
 			noSleuthReactiveSimple(function("reactive_simple"), Pair.noSleuth()),
-			sleuthReactiveSimpleOnQueues(function("DECORATE_QUEUES")),
+			sleuthReactiveSimpleOnQueues(function("DECORATE_QUEUES"), Pair.decorateQueues(), integrationEnabled()),
 			sleuthReactiveSimpleOnEach(function("DECORATE_ON_EACH"), Pair.onEach(), integrationEnabled()),
 			sleuthReactiveSimpleManual(function("reactive_simple_manual"), Pair.manual()),
 			sleuthReactiveSimpleNoFunctionInstrumentationManual(function("reactive_simple_manual"), Pair.manual(), integrationEnabled(), functionDisabled());
